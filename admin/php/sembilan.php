@@ -1,3 +1,19 @@
+<?php 
+session_start();
+
+if(isset($_POST['email'])){
+    $email = "admin@gmail.com";
+    $password = "admin";
+    if($_POST['email'] == $email && $_POST['password'] == $password){
+        $_SESSION ["email"] = $email;
+        header("location:sepuluh.php");
+    }else{
+        header("location:sembilan.php?login=error");
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +36,18 @@
                                 <h1>Login Form</h1>
                             </div>
                             <div class="card-body">
+                                <?php if(isset($_GET['access'])) :?>
+                                    <div class="alert alert-warning" role="alert">
+                                        Anda harus login terlebih dahulu
+                                    </div>
+                                <?php endif ?>
+
+                                <?php if(isset($_GET['login'])) :?>
+                                    <div class="alert alert-danger" role="alert">
+                                        Mohon periksa kembali email & password anda
+                                    </div>
+                                <?php endif ?>
+                                
                                 <form action="" method="post">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Email:</label>
