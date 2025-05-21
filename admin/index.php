@@ -1,3 +1,25 @@
+<?php 
+    session_start();
+    include'config/koneksi.php';
+
+    if(isset($_POST['email']) && isset($_POST['password'])){
+        $email = $_POST['email'];
+        $password = sha1($_POST['password']);
+
+        // select * FROM "user" dimana email di ambil dari orang
+        // input di inputan email
+        $query = mysqli_query($config, "SELECT * FROM users WHERE email='$email' && password = '$password'");
+        // apakah betul email yang diinput user sama dengan email yang di table users?
+        if(mysqli_num_rows($query) > 0){
+            $row = mysqli_fetch_assoc($query);
+            $_SESSION['NAME'] =$row['name'];
+            $_SESSION['ID_USER'] = $row['id'];
+            header("location:dashboard.php");
+        }elese{
+            header("location:login.php?error=login");
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
