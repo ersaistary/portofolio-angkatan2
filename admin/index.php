@@ -12,11 +12,15 @@
         // apakah betul email yang diinput user sama dengan email yang di table users?
         if(mysqli_num_rows($query) > 0){
             $row = mysqli_fetch_assoc($query);
-            $_SESSION['NAME'] =$row['name'];
+
+
+
+            $_SESSION['NAME'] = $row['name'];
             $_SESSION['ID_USER'] = $row['id'];
-            header("location:dashboard.php");
-        }elese{
-            header("location:login.php?error=login");
+            $_SESSION['LEVEL'] = $row['id_level'];
+            header("location:dashboard.php?level=" . base64_encode($_SESSION['LEVEL']));
+        }else{
+            header("location:index.php?error=login");
         }
     }
 ?>
