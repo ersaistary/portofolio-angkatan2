@@ -1,11 +1,3 @@
-<?php 
-session_start();
-    $_name = isset($_SESSION['NAME'])? $_SESSION['NAME']: '';
-    if(!$_name){
-        header ("location:index.php?access=failed");
-    }
-?>
-
 <header class="shadow">
             <nav class="navbar navbar-expand-lg bg-body-white ">
                 <div class="container-fluid">
@@ -24,7 +16,7 @@ session_start();
                                     Page
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">About</a></li>
+                                    <li><a class="dropdown-item" href="?page=profile">Profile</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -32,25 +24,19 @@ session_start();
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
-                            <?php 
-                                $decrypt = base64_decode ($_GET['level']);
-                                if(isset($_GET['level'])&& $decrypt == 1){
-                            ?>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="user.php?level=<?php echo base64_encode($_SESSION['LEVEL'])?>">User</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="dashboard.php?level=<?php echo base64_encode($_SESSION['LEVEL'])?> &page=manage-profile">Profile</a>
-                                </li>
-                            <?php 
-                                }
-                            ?>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="?page=user">User</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="?page=manage-profile">Profile</a>
+                            </li>
                         </ul>
 
                         <ul class="navbar-nav mr-auto mb-2 mb-lg-0 pe-5">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <?php   echo $_name;?>
+                                    <?php echo $_name =isset($_SESSION['NAME'])? $_SESSION['NAME']: '';?>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="keluar.php">LogOut</a></li>

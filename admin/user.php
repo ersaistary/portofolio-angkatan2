@@ -37,9 +37,9 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                <div align="right"class="mb-3">
-                                    <a href="tambah-user.php?level=<?php echo base64_encode($_SESSION['LEVEL'])?>" class="btn btn-primary">Tambah</a>
-                                </div>
+                                    <div align="right"class="mb-3">
+                                        <a href="tambah-user.php?level=<?php echo base64_encode($_SESSION['LEVEL'])?>" class="btn btn-primary">Tambah</a>
+                                    </div>
                                     <table class="table table-hover table-bordered border-secondary-subtle">
                                         <thead class="text-center">
                                             <tr>

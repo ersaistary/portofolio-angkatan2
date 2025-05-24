@@ -13,12 +13,10 @@
         if(mysqli_num_rows($query) > 0){
             $row = mysqli_fetch_assoc($query);
 
-
-
             $_SESSION['NAME'] = $row['name'];
             $_SESSION['ID_USER'] = $row['id'];
             $_SESSION['LEVEL'] = $row['id_level'];
-            header("location:dashboard.php?level=" . base64_encode($_SESSION['LEVEL']));
+            header("location:dashboard.php");
         }else{
             header("location:index.php?error=login");
         }
